@@ -2,6 +2,8 @@
 
 const { clear } = require('console');
 const inquirer = require('inquirer');
+
+/*
 fs.writeFile('.README.md', err => {
   if (err) {
     console.log(err);
@@ -9,7 +11,7 @@ fs.writeFile('.README.md', err => {
   }
   console.log('Page created! Check out README.md in this directory to see it!');
 })
-
+*/
 
 // array of questions for user
 
@@ -124,6 +126,24 @@ Add a New Project
   return inquirer.questions
 
 }
+promptUser()
+  .then(promptProject)
+  .then(readmeData => {
+    return generatePage(readmeData);
+  })
+  .then(READMEmd => {
+    return writeFile(READMEmd);
+  })
+  .then(writeFileResponse => {
+    console.log(writeFileResponse);
+    return copyFile();
+  })
+  .then(copyFileResponse => {
+    console.log(copyFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 
 // function call to initialize program
