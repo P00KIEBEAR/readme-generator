@@ -29,12 +29,6 @@ let questions = [{
   message: 'Enter the GitHub link to your project. (Required)'
 },
 {
-  type: 'confirm',
-  name: 'feature',
-  message: 'Would you like to feature this project?',
-  default: false
-},
-{
   type: 'input',
   name: 'acknowlledements',
   message: 'Is there anyone or links that you would like to acknowllede?'
@@ -50,7 +44,7 @@ const writeToFile = () => {
     prompt(questions)
 
     .then(answers => {
-      const { tilte, about, languages, link, feature, acknowlledements } = answers
+
       generateMarkdown(answers)
       // console.log(answers)
       // Use user feedback for... whatever!!

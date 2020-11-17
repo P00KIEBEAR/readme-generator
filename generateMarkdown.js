@@ -3,30 +3,35 @@ const fs = require('fs');
 // function to generate markdown for README
 function generateMarkdown(answers) {
   console.log(answers)
-  fs.writeFile('./README.md', err => {
-    if (err) {
-      console.log(err);
-      return '#' + title
-
-      /** Table of contents
+  const { title, about, languages, link, acknowlledements } = answers
+  console.log(title)
+  fs.appendFile('./README.md',
+    //BADGE!!!!
+    '#' + title +
+    link + '/n/' +
+    `* Table of contents
       * About the Project
       * built with
       * Getting Start
-      * Acknowledements*/
+      * Acknowledements` +
 
-      "## About the Project" + about
+    "## About the Project" + about + '/n/' +
 
-      "## Build With" + languages
+    "## Build With" + languages + '/n/' +
 
-      /*## Gettting Started
-      
-              ** Screenshot ***/
+    /*## Gettting Started
+    
+            ** Screenshot ***/
 
-      "## Acknowlledements" + acknowlledements
-    }
+    "## Acknowlledements" + acknowlledements,
 
-    console.log('Page created! Check out README.md in this directory to see it!');
-  })
+    err => {
+
+      if (err) {
+        console.log(err);
+        return console.log('Page created! Check out README.md in this directory to see it!');
+      }
+    })
 
 
 
@@ -57,5 +62,4 @@ BADGE  don't forget badge!!
 **Screenshot**
 
 "## Acknowlledements" + acknowlledements
-1.
 */
