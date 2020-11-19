@@ -17,18 +17,10 @@ let questions = [{
   message: 'Enter the color of bagde you would like?'
 },
 {
-  type: 'checkbox',
+  type: 'list',
   name: 'license',
   message: 'What license for this project with? (Check one)',
   choices: ['MIT', 'ISC', 'BSD', ' Unlicense'],
-  validate: nameCheckbox => {
-    if (nameCheckbox) {
-      return true;
-    } else {
-      console.log('Please enter what license for this project with!');
-      return false;
-    }
-  }
 },
 
 {

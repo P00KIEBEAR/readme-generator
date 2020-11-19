@@ -8,28 +8,22 @@ function generateMarkdown(answers) {
   fs.appendFile('./README.md',
     //BADGE!!!!
     ` # ${title}
-
-    [![License: ${license}](https://img.shields.io/badge/license-${license}-${color}.svg)](http://${license}.org/)
-    [badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-      ${link}
-    ## Table of contents
-      * About the Project
-      * built with
-      * Getting Start
-      * Acknowledements
-
-    ## About the Project 
-    ${about}
-
-    "## Build With" 
-    ${languages}
-
-    ## Gettting Started
-    
-            ** Screenshot **
-
-    ## Acknowlledements 
-    ${acknowlledements}`,
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+![License: MIT](https://img.shields.io/badge/License-${license}-${color}.svg)
+## Table of contents
+* About the Project
+* built with
+* Getting Start
+* Acknowledements
+## About the Project 
+${about}
+## Build With
+${languages}
+## Gettting Started
+${link}
+** Screenshot **
+## Acknowlledements 
+${acknowlledements}`,
 
     err => {
 
