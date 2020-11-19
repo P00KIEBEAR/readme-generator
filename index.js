@@ -13,10 +13,31 @@ let questions = [{
 },
 {
   type: 'input',
+  name: 'color',
+  message: 'Enter the color of bagde you would like?'
+},
+{
+  type: 'checkbox',
+  name: 'license',
+  message: 'What license for this project with? (Check one)',
+  choices: ['MIT', 'ISC', 'BSD', ' Unlicense'],
+  validate: nameCheckbox => {
+    if (nameCheckbox) {
+      return true;
+    } else {
+      console.log('Please enter what license for this project with!');
+      return false;
+    }
+  }
+},
+
+{
+  type: 'input',
   name: 'about',
   message: 'Provide a description of the project.',
   default: 'I will come back to fill this out!'
 },
+
 {
   type: 'checkbox',
   name: 'languages',
@@ -37,7 +58,7 @@ let questions = [{
 
 ]
 // function to write README file
-const writeToFile = () => {
+const askQuestion = () => {
 
   //make varibles!!
   inquirer.
@@ -46,6 +67,7 @@ const writeToFile = () => {
     .then(answers => {
 
       generateMarkdown(answers)
+
       // console.log(answers)
       // Use user feedback for... whatever!!
     })
@@ -61,9 +83,8 @@ const writeToFile = () => {
 
 // function to initialize program
 function init() {
-
 }
 
 // function call to initialize program
 //init();
-writeToFile()
+askQuestion()

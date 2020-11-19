@@ -3,27 +3,33 @@ const fs = require('fs');
 // function to generate markdown for README
 function generateMarkdown(answers) {
   console.log(answers)
-  const { title, about, languages, link, acknowlledements } = answers
+  const { title, about, languages, link, acknowlledements, color, license } = answers
   console.log(title)
   fs.appendFile('./README.md',
     //BADGE!!!!
-    '#' + title +
-    link + '/n/' +
-    `* Table of contents
+    ` # ${title}
+
+    [![License: ${license}](https://img.shields.io/badge/license-${license}-${color}.svg)](http://${license}.org/)
+    [badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+      ${link}
+    ## Table of contents
       * About the Project
       * built with
       * Getting Start
-      * Acknowledements` +
+      * Acknowledements
 
-    "## About the Project" + about + '/n/' +
+    ## About the Project 
+    ${about}
 
-    "## Build With" + languages + '/n/' +
+    "## Build With" 
+    ${languages}
 
-    /*## Gettting Started
+    ## Gettting Started
     
-            ** Screenshot ***/
+            ** Screenshot **
 
-    "## Acknowlledements" + acknowlledements,
+    ## Acknowlledements 
+    ${acknowlledements}`,
 
     err => {
 
