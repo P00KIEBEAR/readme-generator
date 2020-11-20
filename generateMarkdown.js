@@ -1,13 +1,11 @@
 
 const fs = require('fs');
 // function to generate markdown for README
-function generateMarkdown(answers) {
-  console.log(answers)
-  const { title, about, languages, link, acknowlledements, color, license } = answers
-  console.log(title)
-  fs.appendFile('./README.md',
-    //BADGE!!!!
-    ` # ${title}
+function generateMarkdown(answers, Acknowlledements) {
+
+  const { title, about, languages, link, info, color, license } = answers
+
+  return ` # ${title}
 ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
 ![License: MIT](https://img.shields.io/badge/License-${license}-${color}.svg)
 ## Table of contents
@@ -18,22 +16,12 @@ function generateMarkdown(answers) {
 ## About the Project 
 ${about}
 ## Build With
-${languages}
+*${languages.length ? '* ' + languages.join('\n* ') : ''}
 ## Gettting Started
+${info}
 ${link}
-** Screenshot **
 ## Acknowlledements 
-${acknowlledements}`,
-
-    err => {
-
-      if (err) {
-        console.log(err);
-        return console.log('Page created! Check out README.md in this directory to see it!');
-      }
-    })
-
-
+*${Acknowlledements.length ? '* ' + Acknowlledements.join('\n* ') : ''}`
 
 }
 

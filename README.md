@@ -1,7 +1,6 @@
-# readme-generator  
- # pat
+ # reademe
 ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-![License: MIT](https://img.shields.io/badge/License-ISC-green.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ## Table of contents
 * About the Project
 * built with
@@ -10,9 +9,9 @@
 ## About the Project 
 I will come back to fill this out!
 ## Build With
-JavaScript
+** JavaScript
 ## Gettting Started
 git
 ** Screenshot **
 ## Acknowlledements 
-me
+pat,tylor

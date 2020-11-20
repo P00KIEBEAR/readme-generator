@@ -2,7 +2,7 @@
 
 const { clear } = require('console');
 const inquirer = require('inquirer');
-const fs = require('fs');
+const fs = require('fs/promises');
 const generateMarkdown = require('./generateMarkdown')
 
 // array of questions for user
@@ -20,7 +20,7 @@ let questions = [{
   type: 'list',
   name: 'license',
   message: 'What license for this project with? (Check one)',
-  choices: ['MIT', 'ISC', 'BSD', ' Unlicense'],
+  choices: ['MIT', 'ISC', 'BSD', 'Unlicense', 'ODbL'],
 },
 
 {
@@ -43,12 +43,51 @@ let questions = [{
 },
 {
   type: 'input',
-  name: 'acknowlledements',
-  message: 'Is there anyone or links that you would like to acknowllede?'
-  //if I have time add more acknowllede!
-}
+  name: 'info',
+  message: 'Provide a description on how to use it.',
+  default: 'I will come back to fill this out!'
 
-]
+
+  //if I have time add more acknowllede!
+
+}]
+const Acknowlledements = [];
+// Each call to `getName()` will:
+// - ask a name and store it in the `names` array
+// - ask if they want to include another
+// - if they answer yes, then it recursively calls `getName()` again
+const getAcknowlledements = () =>
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'acknowlledement',
+        message: 'Is there person or links that you would like to acknowllede?',
+      },
+    ])
+    .then(({ acknowlledement }) => Acknowlledements.push(acknowlledement))
+    .then(() =>
+      inquirer
+        .prompt([
+          {
+            name: 'more',
+            message: 'Is there another person or links that you would like to acknowllede?',
+            type: 'confirm',
+          },
+        ])
+        .then(({ more }) => {
+          if (more) return getAcknowlledements();
+          else {
+            askQuestion()
+
+          }
+        })
+    );
+// Here we kick off the recursion
+
+// When all of the recursion is finished we step into this function
+// and the `names` array has been populated
+
 // function to write README file
 const askQuestion = () => {
 
@@ -56,13 +95,8 @@ const askQuestion = () => {
   inquirer.
     prompt(questions)
 
-    .then(answers => {
+    .then(answers => fs.writeFile('./README.md', generateMarkdown(answers, Acknowlledements)))
 
-      generateMarkdown(answers)
-
-      // console.log(answers)
-      // Use user feedback for... whatever!!
-    })
     .catch(error => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
@@ -72,11 +106,4 @@ const askQuestion = () => {
     });
 }
 
-
-// function to initialize program
-function init() {
-}
-
-// function call to initialize program
-//init();
-askQuestion()
+getAcknowlledements()
