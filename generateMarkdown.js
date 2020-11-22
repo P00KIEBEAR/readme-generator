@@ -1,7 +1,7 @@
 
 const fs = require('fs');
 // function to generate markdown for README
-function generateMarkdown(answers, Acknowlledements, Questions) {
+function generateMarkdown(answers, Acknowledgements, Questions) {
 
   const { title, about, languages, link, info, color, license } = answers
 
@@ -13,14 +13,14 @@ function generateMarkdown(answers, Acknowlledements, Questions) {
 * [Built with](#built-with)
 * [Getting Start](#getting-start)
 * [License](#license)
-* [Githun Link](#github-link)
+* [Github Link](#github-link)
 * [Questions](#questions)
-* [Acknowledements](#acknowledements)
+* [Acknowledgements](#acknowledgements)
 ## About the Project 
 ${about}
 ## Build With
 ${languages.length ? '* ' + languages.join('\n* ') : ''}
-## Gettting Started
+## Getting Started
 ${info}
 ## License
 https://choosealicense.com/licenses/${license}/
@@ -28,8 +28,11 @@ https://choosealicense.com/licenses/${license}/
 ${'\n' + link}
 ## Questions
 ${Questions.length ? '* ' + Questions.join('\n* ') : ''}
-## Acknowlledements 
-${Acknowlledements.length ? '* ' + Acknowlledements.join('\n* ') : ''}`
+## Acknowledgements 
+${Acknowledgements.length ? '* ' + Acknowledgements.join('\n* ') : ''}
+##Test
+First clone repository!
+Then state how to test your code.`
 
 }
 

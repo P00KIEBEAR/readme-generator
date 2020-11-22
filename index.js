@@ -14,13 +14,13 @@ let questions = [{
 {
   type: 'input',
   name: 'color',
-  message: 'Enter the color of bagde you would like?'
+  message: 'Enter the color of badge you would like?'
 },
 {
   type: 'list',
   name: 'license',
   message: 'What license for this project with? (Check one)',
-  choices: ['mit', 'isc', 'bsd', 'unlicense', 'odbL'],
+  choices: ['mit', 'isc', 'bsd', 'unlicense', 'odbL', 'wtfpl'],
 },
 
 {
@@ -51,33 +51,33 @@ let questions = [{
   //if I have time add more acknowllede!
 
 }]
-const Acknowlledements = [];
+const Acknowledgements = [];
 const Questions = [];
 // Each call to `getName()` will:
 // - ask a name and store it in the `names` array
 // - ask if they want to include another
 // - if they answer yes, then it recursively calls `getName()` again
-const getAcknowlledements = () =>
+const getAcknowledgements = () =>
   inquirer
     .prompt([
       {
         type: 'input',
-        name: 'acknowlledement',
-        message: 'Is there person or links that you would like to acknowllede?',
+        name: 'acknowledgement',
+        message: 'Is there person or links that you would like to acknowledge?',
       },
     ])
-    .then(({ acknowlledement }) => Acknowlledements.push(acknowlledement))
+    .then(({ acknowledgement }) => Acknowledgements.push(acknowledgement))
     .then(() =>
       inquirer
         .prompt([
           {
             name: 'more',
-            message: 'Is there another person or links that you would like to acknowllede?',
+            message: 'Is there another person or links that you would like to acknowledge?',
             type: 'confirm',
           },
         ])
         .then(({ more }) => {
-          if (more) return getAcknowlledements();
+          if (more) return getAcknowledgements();
           else {
             getQuestions()
 
@@ -123,7 +123,7 @@ const askQuestion = () => {
   inquirer.
     prompt(questions)
 
-    .then(answers => fs.writeFile('./README.md', generateMarkdown(answers, Acknowlledements, Questions)))
+    .then(answers => fs.writeFile('./README.md', generateMarkdown(answers, Acknowledgements, Questions)))
 
     .catch(error => {
       if (error.isTtyError) {
@@ -134,4 +134,4 @@ const askQuestion = () => {
     });
 }
 
-getAcknowlledements()
+getAcknowledgements()
