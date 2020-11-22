@@ -1,7 +1,7 @@
 
 const fs = require('fs');
 // function to generate markdown for README
-function generateMarkdown(answers, Acknowlledements) {
+function generateMarkdown(answers, Acknowlledements, Questions) {
 
   const { title, about, languages, link, info, color, license } = answers
 
@@ -9,19 +9,27 @@ function generateMarkdown(answers, Acknowlledements) {
 ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
 ![License: MIT](https://img.shields.io/badge/License-${license}-${color}.svg)
 ## Table of contents
-* About the Project
-* built with
-* Getting Start
-* Acknowledements
+* [About the Project](#about-the-project)
+* [Built with](#built-with)
+* [Getting Start](#getting-start)
+* [License](#license)
+* [Githun Link](#github-link)
+* [Questions](#questions)
+* [Acknowledements](#acknowledements)
 ## About the Project 
 ${about}
 ## Build With
-*${languages.length ? '* ' + languages.join('\n* ') : ''}
+${languages.length ? '* ' + languages.join('\n* ') : ''}
 ## Gettting Started
 ${info}
-${link}
+## License
+https://choosealicense.com/licenses/${license}/
+## Github Link
+${'\n' + link}
+## Questions
+${Questions.length ? '* ' + Questions.join('\n* ') : ''}
 ## Acknowlledements 
-*${Acknowlledements.length ? '* ' + Acknowlledements.join('\n* ') : ''}`
+${Acknowlledements.length ? '* ' + Acknowlledements.join('\n* ') : ''}`
 
 }
 

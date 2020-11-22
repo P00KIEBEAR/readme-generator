@@ -20,7 +20,7 @@ let questions = [{
   type: 'list',
   name: 'license',
   message: 'What license for this project with? (Check one)',
-  choices: ['MIT', 'ISC', 'BSD', 'Unlicense', 'ODbL'],
+  choices: ['mit', 'isc', 'bsd', 'unlicense', 'odbL'],
 },
 
 {
@@ -52,6 +52,7 @@ let questions = [{
 
 }]
 const Acknowlledements = [];
+const Questions = [];
 // Each call to `getName()` will:
 // - ask a name and store it in the `names` array
 // - ask if they want to include another
@@ -78,6 +79,33 @@ const getAcknowlledements = () =>
         .then(({ more }) => {
           if (more) return getAcknowlledements();
           else {
+            getQuestions()
+
+          }
+        })
+    );
+const getQuestions = () =>
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'Question',
+        message: 'Is there any questions you have?',
+      },
+    ])
+    .then(({ Question }) => Questions.push(Question))
+    .then(() =>
+      inquirer
+        .prompt([
+          {
+            name: 'more',
+            message: 'Is there another any questions you have?',
+            type: 'confirm',
+          },
+        ])
+        .then(({ more }) => {
+          if (more) return getQuestions();
+          else {
             askQuestion()
 
           }
@@ -95,7 +123,7 @@ const askQuestion = () => {
   inquirer.
     prompt(questions)
 
-    .then(answers => fs.writeFile('./README.md', generateMarkdown(answers, Acknowlledements)))
+    .then(answers => fs.writeFile('./README.md', generateMarkdown(answers, Acknowlledements, Questions)))
 
     .catch(error => {
       if (error.isTtyError) {
