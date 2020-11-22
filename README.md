@@ -3,14 +3,14 @@
 ![License: MIT](https://img.shields.io/badge/License-wtfpl-purple.svg)
 ## Table of contents
 * [About the Project](#about-the-project)
-* [Build With](#build-with)
+* [Built With](#built-with)
 * [Getting Start](#getting-start)
 * [License](#license)
 * [Github Link](#github-link)
 * [Questions](#questions)
 * [Acknowledgements](#acknowledgements)
 ## About the Project 
-I will come back to fill this out!
+This will genereate readme
 ## Build With
 * JavaScript
 * ES6
@@ -23,7 +23,7 @@ https://choosealicense.com/licenses/wtfpl/
 
 github.com
 ## Questions
-* nope
+* not right now
 ## Acknowledgements 
 * Jason
 * Pat
