@@ -10,7 +10,7 @@ function generateMarkdown(answers, Acknowledgements, Questions) {
 ![License: MIT](https://img.shields.io/badge/License-${license}-${color}.svg)
 ## Table of contents
 * [About the Project](#about-the-project)
-* [Built with](#built-with)
+* [Built With](#built-with)
 * [Getting Start](#getting-start)
 * [License](#license)
 * [Github Link](#github-link)
